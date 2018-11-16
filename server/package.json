@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nas5w/angular-mirror.git"
+    "url": "git+https://github.com/nas5w/react-mirror.git"
   },
   "keywords": [
     "magic",
@@ -20,9 +20,9 @@
   "author": "nas5w",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nas5w/angular-mirror/issues"
+    "url": "https://github.com/nas5w/react-mirror/issues"
   },
-  "homepage": "https://github.com/nas5w/angular-mirror#readme",
+  "homepage": "https://github.com/nas5w/react-mirror#readme",
   "dependencies": {
     "express": "^4.16.4",
     "request": "^2.88.0",

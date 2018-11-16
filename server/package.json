@@ -1,0 +1,35 @@
+{
+  "name": "mirror-server",
+  "version": "0.0.1",
+  "description": "Server for the Magic Mirror",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha ./tests --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nas5w/angular-mirror.git"
+  },
+  "keywords": [
+    "magic",
+    "mirror",
+    "node",
+    "express"
+  ],
+  "author": "nas5w",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nas5w/angular-mirror/issues"
+  },
+  "homepage": "https://github.com/nas5w/angular-mirror#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}

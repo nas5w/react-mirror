@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Aldrich');
+
+body {
+  padding: 20px;
+  background-color: #000;
+  color: #FFF;
+  font-family: 'Aldrich', sans-serif;
+}
+
+.Left-sidebar {
+  float: left;
+}
+
+.Right-sidebar {
+  float: right;
+}

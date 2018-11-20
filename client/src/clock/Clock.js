@@ -10,7 +10,7 @@ class Clock extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(() => this.setState({ dateTime: new Date }), 1000);
+    this.interval = setInterval(() => this.setState({ dateTime: new Date() }), 1000);
   }
 
   componentWillUnmount() {

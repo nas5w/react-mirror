@@ -7,32 +7,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      weather: {
-        current: { temperature: 'TBD', icon: '01d' },
-        forecast: [{ day: 'Tuesday', hi: 59, low: 43, icon: '10d' }]
-      },
+      weather: null,
       metro: null
     }
   }
 
   componentDidMount() {
-
-    fetch('http://localhost:4000/weather', {
-      method: 'post',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ zip: '20001' })
-    }).then(function(response) {
-      return response.json();
-    }).then(function(data) {
-      console.log(data);
-    });
-
-
-    this.interval = setInterval(() => {
-      this.setState({
-        weather: this.getWeather()
-      });
-    }, 1000);
+    this.getWeather();
+    this.interval = setInterval(() => this.getWeather(), 600000);
   }
 
   componentWillUnmount() {
@@ -40,14 +22,23 @@ class App extends Component {
   }  
 
   getWeather() {
-    return {
-      current: { temperature: 50, icon: '10d' },
-      forecast: [
-        { day: 'Tuesday', hi: 59, low: 43, icon: '10d' },
-        { day: 'Wednesday', hi: 54, low: 40, icon: '10d' },
-        { day: 'Thursday', hi: 62, low: 50, icon: '10d' }
-      ]
-    };
+    fetch('http://localhost:4000/weather', {
+      method: 'post',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ zip: '20001' })
+    }).then(response => {
+      return response.json();
+    }).then(response => {
+      console.log(response);
+      this.setState({
+        weather: {
+          current: { temperature: Math.round(response.data.current.main.temp), icon: response.data.current.weather[0].icon },
+          forecast: response.data.forecast.map(forecast => {
+            return { day: new Date(forecast.day), hi: Math.round(forecast.hi), low: Math.round(forecast.low), icon: forecast.icon }
+          })
+        }
+      })
+    });
   }
 
   render() {

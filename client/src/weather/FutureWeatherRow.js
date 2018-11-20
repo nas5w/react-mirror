@@ -9,7 +9,7 @@ class FutureWeatherRow extends Component {
           <img alt="Current Weather" src={`https://openweathermap.org/img/w/${this.props.icon}.png`} />
         </div>
         <div className="Future-weather-temp">
-          {this.props.day}: Hi {this.props.hi} / Low {this.props.low}
+          {this.props.day.toLocaleDateString()}: Hi {this.props.hi} / Low {this.props.low}
         </div>
         <div className="clear"></div>
       </div>

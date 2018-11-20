@@ -7,7 +7,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="Left-sidebar">
-          <Clock />
+          <Clock 
+            timeZone='us-EN'
+            dateOpts={{ weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }}
+            timeOpts={{ hour: '2-digit', minute: '2-digit' }}
+          />
         </div>
         <div className="Right-sidebar">
           Right

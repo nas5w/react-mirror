@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
+import './Clock.css';
 
 class Clock extends Component {
   constructor(props) {
@@ -16,9 +19,14 @@ class Clock extends Component {
 
   render() {
     return (
-      <div className="Clock">
-        { this.state.dateTime.toLocaleDateString() }<br />
-        { this.state.dateTime.toLocaleTimeString() }
+      <div className="Clock-container">
+        <div className="Clock-icon">
+          <FontAwesomeIcon icon={faClock} />&nbsp;
+        </div>
+        <div className="Date-time">
+          { this.state.dateTime.toLocaleDateString(this.props.timeZone, this.props.dateOpts) }<br />
+          { this.state.dateTime.toLocaleTimeString(this.props.timeZone, this.props.timeOpts) }
+        </div>
       </div>
     );
   }

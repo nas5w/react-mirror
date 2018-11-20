@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import CurrentWeather from './CurrentWeather';
+import FutureWeather from './FutureWeather';
+import './Weather.css';
 
 class Weather extends Component {
   render() {
     return (
       <div className="Weather">
-        <div class="Current-weather">
-        50&deg;
-        <img src="https://openweathermap.org/img/w/01n.png" />
-        </div>
+        <CurrentWeather temperature={50} icon="10d" />
+        <div className="clear"></div>
+        <FutureWeather temperature={50} icon="10d" />
       </div>
     );
   }

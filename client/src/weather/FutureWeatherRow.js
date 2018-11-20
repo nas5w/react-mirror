@@ -11,7 +11,7 @@ class FutureWeatherRow extends Component {
         <div className="Future-weather-temp">
           {this.props.day}: Hi {this.props.hi} / Low {this.props.low}
         </div>
-        <div class="clear"></div>
+        <div className="clear"></div>
       </div>
     );
   }

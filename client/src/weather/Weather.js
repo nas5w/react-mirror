@@ -7,9 +7,8 @@ class Weather extends Component {
   render() {
     return (
       <div className="Weather">
-        <CurrentWeather temperature={50} icon="10d" />
-        <div className="clear"></div>
-        <FutureWeather temperature={50} icon="10d" />
+        <CurrentWeather current={this.props.weather.current} />
+        <FutureWeather forecast={this.props.weather.forecast} />
       </div>
     );
   }

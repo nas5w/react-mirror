@@ -4,13 +4,14 @@ import './Weather.css';
 class CurrentWeather extends Component {
   render() {
     return (
-      <div class="Current-weather">
-        <div class="Current-icon">
-          <img alt="Current Weather" src={`https://openweathermap.org/img/w/${this.props.icon}.png`} />
+      <div className="Current-weather">
+        <div className="Current-icon">
+          <img alt="Current Weather" src={`https://openweathermap.org/img/w/${this.props.current.icon}.png`} />
         </div>
-        <div class="Current-temperature">
-          {this.props.temperature}&deg;
+        <div className="Current-temperature">
+          {this.props.current.temperature}&deg;
         </div>
+        <div className="clear"></div>
       </div>
     );
   }

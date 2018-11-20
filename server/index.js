@@ -1,10 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 const config = require('./config');
 const app = express();
 const router = express.Router();
 const weather = require('./routes/weather');
 const metro = require('./routes/metro');
+
+app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -6,6 +6,7 @@ module.exports = (req, res) => {
   	return res.status(403).send({ message: 'A weather api key must be configured.' });
 	}
 
+  console.log(req);
   if (!req.body.zip) {
   	return res.status(400).send({ message: 'A zip code is required.' });
   }

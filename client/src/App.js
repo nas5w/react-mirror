@@ -19,6 +19,7 @@ class App extends Component {
 
     fetch('http://localhost:4000/weather', {
       method: 'post',
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ zip: '20001' })
     }).then(function(response) {
       return response.json();

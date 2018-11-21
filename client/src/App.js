@@ -15,22 +15,24 @@ class App extends Component {
 
   componentDidMount() {
     this.getWeather();
-    this.interval = setInterval(() => this.getWeather(), 600000);
+    this.getMetro();
+    this.weatherInterval = setInterval(() => this.getWeather(), 600000);
+    this.metroInterval = setInterval(() => this.getMetro(), 30000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
+    clearInterval(this.weatherInterval);
+    clearInterval(this.metroInterval);
   }  
 
   getWeather() {
     fetch('http://localhost:4000/weather', {
       method: 'post',
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ zip: '20001' })
     }).then(response => {
       return response.json();
     }).then(response => {
-      console.log(response);
       this.setState({
         weather: {
           current: { temperature: Math.round(response.data.current.main.temp), icon: response.data.current.weather[0].icon },
@@ -38,6 +40,20 @@ class App extends Component {
             return { day: new Date(forecast.day), hi: Math.round(forecast.hi), low: Math.round(forecast.low), icon: forecast.icon }
           })
         }
+      })
+    });
+  }
+
+  getMetro() {
+    fetch('http://localhost:4000/metro', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ station: 'C05' })
+    }).then(response => {
+      return response.json();
+    }).then(response => {
+      this.setState({
+        metro: response.data.Trains
       })
     });
   }
@@ -54,7 +70,7 @@ class App extends Component {
         </div>
         <div className="Right-sidebar">
           <Weather weather={this.state.weather} />
-          <Metro />
+          <Metro metro={this.state.metro}/>
         </div>
       </div>
     );

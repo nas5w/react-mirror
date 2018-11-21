@@ -12,18 +12,18 @@ class Metro extends Component {
         </div>
         <div className="clear"></div>
         <table className="Train-schedule">
-          <tr className="Train-row">
-            <td>GR</td>
-            <td>6</td>
-            <td>Brnch Av</td>
-            <td>4</td>
-          </tr>
-          <tr className="Train-row">
-            <td>GR</td>
-            <td>6</td>
-            <td>Other Station</td>
-            <td>13</td>
-          </tr>
+          <tbody>
+            {
+              this.props.metro &&
+              this.props.metro.map((train, key) => {
+                return <tr key={key} className="Train-row">
+                  <td><img alt={`${train.Line} line`} className="Line-image" src={require(`./${train.Line}.png`)} /></td>
+                  <td>{train.Destination}</td>
+                  <td>{train.Min}</td>
+                </tr>
+              })
+            }
+          </tbody>
         </table>
       </div>
     );

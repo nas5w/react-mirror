@@ -8,3 +8,11 @@
 	float: right;
 	text-align: right;
 }
+
+.Train-row td {
+	padding: 2px 0 2px 7px;
+}
+
+.Line-image {
+	height: 22px;
+}

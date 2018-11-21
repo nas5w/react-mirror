@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Clock from './clock/Clock';
 import Weather from './weather/Weather';
+import Metro from './metro/Metro';
 import './App.css';
 
 class App extends Component {
@@ -53,6 +54,7 @@ class App extends Component {
         </div>
         <div className="Right-sidebar">
           <Weather weather={this.state.weather} />
+          <Metro />
         </div>
       </div>
     );

@@ -4,4 +4,6 @@ node_js:
 env:
   - TEST_DIR=client
   - TEST_DIR=server
+  - METRO_API_KEY=XXX
+  - WEATHER_API_KEY=XXX
 script: cd $TEST_DIR && npm install && npm test

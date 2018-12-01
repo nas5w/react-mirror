@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
-import './Weather.css';
+import React from "react";
+import "./Weather.css";
 
-class FutureWeatherRow extends Component {
-  render() {
-    return (
-      <div className="Future-weather-row">
-        <div className="Future-weather-icon">
-          <img alt="Current Weather" src={`https://openweathermap.org/img/w/${this.props.icon}.png`} />
-        </div>
-        <div className="Future-weather-temp">
-          {this.props.day.toLocaleDateString()}: Hi {this.props.hi} / Low {this.props.low}
-        </div>
-        <div className="clear"></div>
+const FutureWeatherRow = props => {
+  return (
+    <div className="Future-weather-row">
+      <div className="Future-weather-icon">
+        <img
+          alt="Current Weather"
+          src={`https://openweathermap.org/img/w/${props.icon}.png`}
+        />
       </div>
-    );
-  }
-}
+      <div className="Future-weather-temp">
+        {props.day.toLocaleDateString()}: Hi {props.hi} / Low {props.low}
+      </div>
+      <div className="clear" />
+    </div>
+  );
+};
 
 export default FutureWeatherRow;

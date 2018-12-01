@@ -1,6 +1,6 @@
 # React Magic Mirror
 
-[![Build Status](https://travis-ci.org/nas5w/react-mirror.svg?branch=master)](https://travis-ci.org/nas5w/react-mirror)
+[![Build Status](https://travis-ci.com/nas5w/react-mirror.svg?branch=master)](https://travis-ci.com/nas5w/react-mirror)
 
 This repository contains the front- and back-end code for a React-based Magic Mirror Application. If you don't know what a magic mirror is, take a look at [this site](https://www.raspberrypi.org/blog/magic-mirror/).
 

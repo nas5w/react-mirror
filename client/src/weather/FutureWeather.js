@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import FutureWeatherRow from "./FutureWeatherRow";
 import "./Weather.css";
 
@@ -18,6 +19,10 @@ const FutureWeather = props => {
       })}
     </div>
   );
+};
+
+FutureWeather.propTypes = {
+  weather: PropTypes.object.isRequired
 };
 
 export default FutureWeather;

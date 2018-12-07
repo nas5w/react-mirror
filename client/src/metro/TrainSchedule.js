@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import TrainScheduleRow from "./TrainScheduleRow";
 import "./Metro.css";
 
@@ -20,6 +21,10 @@ const TrainSchedule = props => {
       </tbody>
     </table>
   );
+};
+
+TrainSchedule.propTypes = {
+  metro: PropTypes.object.isRequired
 };
 
 export default TrainSchedule;

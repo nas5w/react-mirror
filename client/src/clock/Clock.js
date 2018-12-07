@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import "./Clock.css";
@@ -17,6 +18,13 @@ const Clock = props => {
       </div>
     </div>
   );
+};
+
+Clock.propTypes = {
+  dateTime: PropTypes.object.isRequired,
+  timeZone: PropTypes.string.isRequired,
+  dateOpts: PropTypes.object.isRequired,
+  timeOpts: PropTypes.object.isRequired
 };
 
 export default Clock;

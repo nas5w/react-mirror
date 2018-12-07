@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Metro.css";
 
 const TrainScheduleRow = props => {
@@ -22,6 +23,12 @@ const TrainScheduleRow = props => {
       <td>{props.min}</td>
     </tr>
   );
+};
+
+TrainScheduleRow.propTypes = {
+  line: PropTypes.string.isRequired,
+  destination: PropTypes.string.isRequired,
+  min: PropTypes.string.isRequired
 };
 
 export default TrainScheduleRow;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Weather.css";
 
 const FutureWeatherRow = props => {
@@ -16,6 +17,13 @@ const FutureWeatherRow = props => {
       <div className="clear" />
     </div>
   );
+};
+
+FutureWeatherRow.propTypes = {
+  icon: PropTypes.string.isRequired,
+  day: PropTypes.string.isRequired,
+  hi: PropTypes.string.isRequired,
+  low: PropTypes.string.isRequired
 };
 
 export default FutureWeatherRow;

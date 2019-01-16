@@ -1,15 +1,15 @@
-const rp = require("request-promise");
+const rp = require('request-promise');
 const weather_api_key = process.env.WEATHER_API_KEY || null;
 
 module.exports = (req, res) => {
   if (!weather_api_key) {
     return res
       .status(403)
-      .send({ message: "A weather api key must be configured." });
+      .send({ message: 'A weather api key must be configured.' });
   }
 
   if (!req.body.zip) {
-    return res.status(400).send({ message: "A zip code is required." });
+    return res.status(400).send({ message: 'A zip code is required.' });
   }
 
   if (req.body.zip.length !== 5) {
@@ -19,7 +19,7 @@ module.exports = (req, res) => {
   }
 
   // Make call to OpenWeatherMap API
-  const base_uri = "http://api.openweathermap.org/data/2.5";
+  const base_uri = 'http://api.openweathermap.org/data/2.5';
   const current_uri = `${base_uri}/weather?zip=${
     req.body.zip
   },us&units=imperial&appid=${weather_api_key}`;
@@ -86,7 +86,7 @@ module.exports = (req, res) => {
     }
 
     return res.status(200).send({
-      message: "Weather data retrieved",
+      message: 'Weather data retrieved',
       data: { current: JSON.parse(response[0]), forecast: forecast }
     });
   });

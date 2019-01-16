@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test-server": "cd server && npm test",
-    "test-client": "cd client && npm test"
+    "test-client": "cd client && npm test",
+    "lint-server": "cd server && pretty-quick --staged npm lint",
+    "lint-client": "cd client && pretty-quick --staged npm lint"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "cd client && pretty-quick --staged npm lint",
+      "pre-commit": "npm run lint-server && npm run lint-client",
       "pre-push": "npm run test-server && npm run test-client"
     }
   },

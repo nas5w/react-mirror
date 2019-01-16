@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "jest"
+    "test": "npm start & jest && npm stop",
+    "stop": "pkill app-server"
   },
   "repository": {
     "type": "git",

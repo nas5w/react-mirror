@@ -1,15 +1,16 @@
 {
   "name": "react-mirror",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test-server": "cd server && npm test",
+    "test-client": "cd client && npm test"
   },
   "husky": {
     "hooks": {
       "pre-commit": "cd client && pretty-quick --staged npm lint",
-      "pre-push": "cd client && npm test && npm start & npm test"
+      "pre-push": "npm run test-server && npm run test-client"
     }
   },
   "repository": {

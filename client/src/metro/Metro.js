@@ -2,16 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrain } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 import TrainSchedule from './TrainSchedule';
-import './Metro.css';
+
+const Clear = styled.div`
+  clear: both;
+`;
+
+const TrainIcon = styled.div`
+  float: right;
+  font-size: 30px;
+  margin-bottom: 10px;
+`;
 
 const Metro = ({ metro }) => {
   return (
-    <div className="Metro">
-      <div className="Train-icon">
+    <div>
+      <TrainIcon>
         <FontAwesomeIcon icon={faTrain} />
-      </div>
-      <div className="clear" />
+      </TrainIcon>
+      <Clear />
       {metro && <TrainSchedule metro={metro} />}
     </div>
   );

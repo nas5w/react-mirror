@@ -1,10 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Metro.css';
+import styled from 'styled-components';
+
+const TrainRow = styled.tr`
+  td {
+    padding: 2px 0 2px 7px;
+  }
+`;
+
+const LineImage = styled.img`
+  height: 22px;
+`
 
 const TrainScheduleRow = ({ line, destination, min }) => {
   return (
-    <tr className="Train-row">
+    <TrainRow>
       <td>
         {(line === 'BL' ||
           line === 'OR' ||
@@ -12,16 +22,15 @@ const TrainScheduleRow = ({ line, destination, min }) => {
           line === 'RD' ||
           line === 'YL' ||
           line === 'GR') && (
-          <img
+          <LineImage
             alt={`${line} line`}
-            className="Line-image"
             src={`./img/${line}.png`}
           />
         )}
       </td>
       <td>{destination}</td>
       <td>{min}</td>
-    </tr>
+    </TrainRow>
   );
 };
 

@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
+import styled, { createGlobalStyle } from 'styled-components';
 import Clock from './clock/Clock';
 import Weather from './weather/Weather';
 import Metro from './metro/Metro';
-import './App.css';
+
+const GlobalStyles = createGlobalStyle`
+body {
+  padding: 20px;
+  background-color: #000;
+  color: #fff;
+  @import url('https://fonts.googleapis.com/css?family=Aldrich');
+  font-family: 'Aldrich', sans-serif;
+}
+`;
+
+const LeftSidebar = styled.div`
+  float: left;
+`;
+
+const RightSidebar = styled.div`
+  float: right;
+`;
 
 class App extends Component {
   constructor(props) {
@@ -40,12 +58,12 @@ class App extends Component {
       .then(response => {
         return response.json();
       })
-      .then(({data}) => {
+      .then(({ data }) => {
         this.setState({
           weather: {
             current: {
               temperature: Math.round(data.current.main.temp),
-              icon: (data.current.weather[0].icon),
+              icon: data.current.weather[0].icon,
             },
             forecast: data.forecast.map(({ day, hi, low, icon }) => {
               return {
@@ -80,7 +98,8 @@ class App extends Component {
     const { dateTime, weather, metro } = this.state;
     return (
       <div className="App">
-        <div className="Left-sidebar">
+        <GlobalStyles />
+        <LeftSidebar className="Left-sidebar">
           <Clock
             dateTime={dateTime}
             timeZone="us-EN"
@@ -92,19 +111,11 @@ class App extends Component {
             }}
             timeOpts={{ hour: '2-digit', minute: '2-digit' }}
           />
-        </div>
-        <div className="Right-sidebar">
-          {weather ? (
-            <Weather weather={weather} />
-          ) : (
-            <div>Loading...</div>
-          )}
-          {metro ? (
-            <Metro metro={metro} />
-          ) : (
-            <div>Loading...</div>
-          )}
-        </div>
+        </LeftSidebar>
+        <RightSidebar>
+          {weather ? <Weather weather={weather} /> : <div>Loading...</div>}
+          {metro ? <Metro metro={metro} /> : <div>Loading...</div>}
+        </RightSidebar>
       </div>
     );
   }

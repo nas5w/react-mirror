@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import TrainScheduleRow from './TrainScheduleRow';
-import './Metro.css';
+
+const Schedule = styled.table`
+  float: right;
+  text-align: right;
+`;
 
 const TrainSchedule = ({ metro }) => {
   return (
-    <table className="Train-schedule">
+    <Schedule>
       <tbody>
         {metro &&
           metro.map(({ Line, Destination, Min }, key) => {
@@ -19,12 +24,12 @@ const TrainSchedule = ({ metro }) => {
             );
           })}
       </tbody>
-    </table>
+    </Schedule>
   );
 };
 
 TrainSchedule.propTypes = {
-  metro: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+  metro: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default TrainSchedule;

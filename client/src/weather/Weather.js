@@ -1,19 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import CurrentWeather from './CurrentWeather';
 import FutureWeather from './FutureWeather';
-import './Weather.css';
+
+const WeatherPanel = styled.div`
+  margin-bottom: 20px;
+`
 
 const Weather = ({ weather }) => {
   return (
-    <div className="Weather">
+    <WeatherPanel>
       {weather && (
         <div>
           <CurrentWeather current={weather.current} />
           <FutureWeather forecast={weather.forecast} />
         </div>
       )}
-    </div>
+    </WeatherPanel>
   );
 };
 

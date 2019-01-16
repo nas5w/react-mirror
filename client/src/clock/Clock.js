@@ -2,20 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
-import './Clock.css';
+import styled from 'styled-components';
+
+const ClockIcon = styled.div`
+  float: left;
+  font-size: 30px;
+`
+
+const DateTime = styled.div`
+  float: left;
+  font-size: 16px;
+`
 
 const Clock = ({ dateTime, timeZone, dateOpts, timeOpts }) => {
   return (
-    <div className="Clock-container">
-      <div className="Clock-icon">
+    <div>
+      <ClockIcon>
         <FontAwesomeIcon icon={faClock} />
         &nbsp;
-      </div>
-      <div className="Date-time">
+      </ClockIcon>
+      <DateTime>
         {dateTime.toLocaleDateString(timeZone, dateOpts)}
         <br />
         {dateTime.toLocaleTimeString(timeZone, timeOpts)}
-      </div>
+      </DateTime>
     </div>
   );
 };

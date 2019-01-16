@@ -1,7 +1,14 @@
 language: node_js
 node_js:
   - "node"
+cache:
+  directories:
+    - "node_modules"
 env:
   - TEST_DIR=client
-  - TEST_DIR=server METRO_API_KEY=XXX WEATHER_API_KEY=XXX
-script: cd $TEST_DIR && npm install && npm test
+  - TEST_DIR=server
+script:
+  - cd $TEST_DIR
+  - npm install
+  - npm start &
+  - npm test

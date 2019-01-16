@@ -22,12 +22,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint ."
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged npm lint",
-      "pre-push": "npm test"
-    }
-  },
   "browserslist": [
     ">0.2%",
     "not dead",

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "npm start & jest && npm stop",
-    "stop": "pkill app-server"
+    "stop": "pkill app-server",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

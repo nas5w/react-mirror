@@ -1,18 +1,18 @@
 .Train-icon {
-	float: right;
-	font-size: 30px;
-	margin-bottom: 10px;
+  float: right;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
 
 .Train-schedule {
-	float: right;
-	text-align: right;
+  float: right;
+  text-align: right;
 }
 
 .Train-row td {
-	padding: 2px 0 2px 7px;
+  padding: 2px 0 2px 7px;
 }
 
 .Line-image {
-	height: 22px;
+  height: 22px;
 }

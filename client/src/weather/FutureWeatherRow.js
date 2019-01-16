@@ -1,18 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./Weather.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './Weather.css';
 
-const FutureWeatherRow = props => {
+const FutureWeatherRow = ({ icon, day, hi, low }) => {
   return (
     <div className="Future-weather-row">
       <div className="Future-weather-icon">
         <img
           alt="Current Weather"
-          src={`https://openweathermap.org/img/w/${props.icon}.png`}
+          src={`https://openweathermap.org/img/w/${icon}.png`}
         />
       </div>
       <div className="Future-weather-temp">
-        {props.day.toLocaleDateString()}: Hi {props.hi} / Low {props.low}
+        {day.toLocaleDateString()}: Hi {hi} / Low {low}
       </div>
       <div className="clear" />
     </div>
@@ -21,9 +21,9 @@ const FutureWeatherRow = props => {
 
 FutureWeatherRow.propTypes = {
   icon: PropTypes.string.isRequired,
-  day: PropTypes.string.isRequired,
-  hi: PropTypes.string.isRequired,
-  low: PropTypes.string.isRequired
+  day: PropTypes.instanceOf(Date).isRequired,
+  hi: PropTypes.number.isRequired,
+  low: PropTypes.number.isRequired,
 };
 
 export default FutureWeatherRow;

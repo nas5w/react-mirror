@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import CurrentWeather from "./CurrentWeather";
-import FutureWeather from "./FutureWeather";
-import "./Weather.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import CurrentWeather from './CurrentWeather';
+import FutureWeather from './FutureWeather';
+import './Weather.css';
 
-const Weather = props => {
+const Weather = ({ weather }) => {
   return (
     <div className="Weather">
-      {props.weather && (
+      {weather && (
         <div>
-          <CurrentWeather current={props.weather.current} />
-          <FutureWeather forecast={props.weather.forecast} />
+          <CurrentWeather current={weather.current} />
+          <FutureWeather forecast={weather.forecast} />
         </div>
       )}
     </div>
@@ -18,7 +18,7 @@ const Weather = props => {
 };
 
 Weather.propTypes = {
-  weather: PropTypes.object.isRequired
+  weather: PropTypes.shape({}).isRequired,
 };
 
 export default Weather;

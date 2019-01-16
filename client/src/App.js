@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import Clock from "./clock/Clock";
-import Weather from "./weather/Weather";
-import Metro from "./metro/Metro";
-import "./App.css";
+import React, { Component } from 'react';
+import Clock from './clock/Clock';
+import Weather from './weather/Weather';
+import Metro from './metro/Metro';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +10,7 @@ class App extends Component {
     this.state = {
       dateTime: new Date(),
       weather: null,
-      metro: null
+      metro: null,
     };
   }
 
@@ -19,7 +19,7 @@ class App extends Component {
     this.getMetro();
     this.dateTimeInterval = setInterval(
       () => this.setState({ dateTime: new Date() }),
-      1000
+      1000,
     );
     this.weatherInterval = setInterval(() => this.getWeather(), 600000);
     this.metroInterval = setInterval(() => this.getMetro(), 30000);
@@ -32,69 +32,78 @@ class App extends Component {
   }
 
   getWeather() {
-    fetch("http://localhost:4000/weather", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ zip: "20001" })
+    fetch('http://localhost:4000/weather', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ zip: '20001' }),
     })
       .then(response => {
         return response.json();
       })
-      .then(response => {
+      .then(({data}) => {
         this.setState({
           weather: {
             current: {
-              temperature: Math.round(response.data.current.main.temp),
-              icon: response.data.current.weather[0].icon
+              temperature: Math.round(data.current.main.temp),
+              icon: (data.current.weather[0].icon),
             },
-            forecast: response.data.forecast.map(forecast => {
+            forecast: data.forecast.map(({ day, hi, low, icon }) => {
               return {
-                day: new Date(forecast.day),
-                hi: Math.round(forecast.hi),
-                low: Math.round(forecast.low),
-                icon: forecast.icon
+                day: new Date(day),
+                hi: Math.round(hi),
+                low: Math.round(low),
+                icon,
               };
-            })
-          }
+            }),
+          },
         });
       });
   }
 
   getMetro() {
-    fetch("http://localhost:4000/metro", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ station: "C05" })
+    fetch('http://localhost:4000/metro', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ station: 'C05' }),
     })
       .then(response => {
         return response.json();
       })
-      .then(response => {
+      .then(({ data: { Trains } }) => {
         this.setState({
-          metro: response.data.Trains
+          metro: Trains,
         });
       });
   }
 
   render() {
+    const { dateTime, weather, metro } = this.state;
     return (
       <div className="App">
         <div className="Left-sidebar">
           <Clock
-            dateTime={this.state.dateTime}
+            dateTime={dateTime}
             timeZone="us-EN"
             dateOpts={{
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric"
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
             }}
-            timeOpts={{ hour: "2-digit", minute: "2-digit" }}
+            timeOpts={{ hour: '2-digit', minute: '2-digit' }}
           />
         </div>
         <div className="Right-sidebar">
-          <Weather weather={this.state.weather} />
-          <Metro metro={this.state.metro} />
+          {weather ? (
+            <Weather weather={weather} />
+          ) : (
+            <div>Loading...</div>
+          )}
+          {metro ? (
+            <Metro metro={metro} />
+          ) : (
+            <div>Loading...</div>
+          )}
         </div>
       </div>
     );

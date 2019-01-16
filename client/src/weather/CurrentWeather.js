@@ -1,26 +1,24 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./Weather.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './Weather.css';
 
-const CurrentWeather = props => {
+const CurrentWeather = ({ current: {icon, temperature} }) => {
   return (
     <div className="Current-weather">
       <div className="Current-icon">
         <img
           alt="Current Weather"
-          src={`https://openweathermap.org/img/w/${props.current.icon}.png`}
+          src={`https://openweathermap.org/img/w/${icon}.png`}
         />
       </div>
-      <div className="Current-temperature">
-        {props.current.temperature}&deg;
-      </div>
+      <div className="temperature">{temperature}&deg;</div>
       <div className="clear" />
     </div>
   );
 };
 
 CurrentWeather.propTypes = {
-  current: PropTypes.object.isRequired
+  current: PropTypes.shape({}).isRequired,
 };
 
 export default CurrentWeather;

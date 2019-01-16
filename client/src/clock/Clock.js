@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
-import "./Clock.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
+import './Clock.css';
 
-const Clock = props => {
+const Clock = ({ dateTime, timeZone, dateOpts, timeOpts }) => {
   return (
     <div className="Clock-container">
       <div className="Clock-icon">
@@ -12,19 +12,19 @@ const Clock = props => {
         &nbsp;
       </div>
       <div className="Date-time">
-        {props.dateTime.toLocaleDateString(props.timeZone, props.dateOpts)}
+        {dateTime.toLocaleDateString(timeZone, dateOpts)}
         <br />
-        {props.dateTime.toLocaleTimeString(props.timeZone, props.timeOpts)}
+        {dateTime.toLocaleTimeString(timeZone, timeOpts)}
       </div>
     </div>
   );
 };
 
 Clock.propTypes = {
-  dateTime: PropTypes.object.isRequired,
+  dateTime: PropTypes.instanceOf(Date).isRequired,
   timeZone: PropTypes.string.isRequired,
-  dateOpts: PropTypes.object.isRequired,
-  timeOpts: PropTypes.object.isRequired
+  dateOpts: PropTypes.shape({}).isRequired,
+  timeOpts: PropTypes.shape({}).isRequired,
 };
 
 export default Clock;

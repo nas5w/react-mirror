@@ -1,31 +1,31 @@
 .Weather {
-	margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .Current-temperature {
-	font-size: 35px;
-	float: right;
+  font-size: 35px;
+  float: right;
 }
 
 .Current-icon {
-	float: right;
-	margin-top: -10px;
+  float: right;
+  margin-top: -10px;
 }
 
 .clear {
-	clear: both;
+  clear: both;
 }
 
 .Future-weather-temp {
-	float: right;
-	font-size: 14px;
+  float: right;
+  font-size: 14px;
 }
 
 .Future-weather-icon {
-	float: right;
+  float: right;
 }
 
 .Future-weather-icon img {
-	height: 30px;
-	margin: -9px 0 0 5px;
+  height: 30px;
+  margin: -9px 0 0 5px;
 }

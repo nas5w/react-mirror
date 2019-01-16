@@ -8,8 +8,8 @@ describe('Metro API Route', () => {
       status,
       body: {
         message,
-        data: { Trains }
-      }
+        data: { Trains },
+      },
     } = await supertest.post('/metro').send({ station: 'C05' });
     expect(message).toBe('Metro data retrieved');
     expect(status).toBe(200);

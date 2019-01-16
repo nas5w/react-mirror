@@ -36,58 +36,58 @@ module.exports = (req, res) => {
         day: forecastRes.list[0].dt_txt,
         hi: -100,
         low: 1000,
-        icon: forecastRes.list[5].weather[0].icon
+        icon: forecastRes.list[5].weather[0].icon,
       },
       {
         day: forecastRes.list[8].dt_txt,
         hi: -100,
         low: 1000,
-        icon: forecastRes.list[13].weather[0].icon
+        icon: forecastRes.list[13].weather[0].icon,
       },
       {
         day: forecastRes.list[16].dt_txt,
         hi: -100,
         low: 1000,
-        icon: forecastRes.list[21].weather[0].icon
-      }
+        icon: forecastRes.list[21].weather[0].icon,
+      },
     ];
 
     for (let i = 0; i < 8; i++) {
       forecast[0].hi = Math.max(
         forecast[0].hi,
-        forecastRes.list[i].main.temp_max
+        forecastRes.list[i].main.temp_max,
       );
       forecast[0].low = Math.min(
         forecast[0].low,
-        forecastRes.list[i].main.temp_min
+        forecastRes.list[i].main.temp_min,
       );
     }
 
     for (let i = 8; i < 16; i++) {
       forecast[1].hi = Math.max(
         forecast[1].hi,
-        forecastRes.list[i].main.temp_max
+        forecastRes.list[i].main.temp_max,
       );
       forecast[1].low = Math.min(
         forecast[1].low,
-        forecastRes.list[i].main.temp_min
+        forecastRes.list[i].main.temp_min,
       );
     }
 
     for (let i = 16; i < 24; i++) {
       forecast[2].hi = Math.max(
         forecast[2].hi,
-        forecastRes.list[i].main.temp_max
+        forecastRes.list[i].main.temp_max,
       );
       forecast[2].low = Math.min(
         forecast[2].low,
-        forecastRes.list[i].main.temp_min
+        forecastRes.list[i].main.temp_min,
       );
     }
 
     return res.status(200).send({
       message: 'Weather data retrieved',
-      data: { current: JSON.parse(response[0]), forecast: forecast }
+      data: { current: JSON.parse(response[0]), forecast: forecast },
     });
   });
 };

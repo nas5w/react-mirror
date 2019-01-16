@@ -20,7 +20,7 @@ module.exports = (req, res) => {
   return rp(rail_uri).then(response =>
     res.status(200).send({
       message: 'Metro data retrieved',
-      data: JSON.parse(response)
-    })
+      data: JSON.parse(response),
+    }),
   );
 };

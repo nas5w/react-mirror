@@ -7,10 +7,10 @@ describe('Weather API Route', () => {
     const {
       body: {
         message,
-        data: { current, forecast }
-      }
+        data: { current, forecast },
+      },
     } = await supertest.post('/weather').send({ zip: '20001' });
-    expect(message).toBe('Weather data retrieved')
+    expect(message).toBe('Weather data retrieved');
     expect(current).toBeTruthy();
     expect(forecast).toBeTruthy();
   });

@@ -1,26 +1,38 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./Weather.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const CurrentWeather = props => {
+const Clear = styled.div`
+  clear: both;
+`;
+
+const Temperature = styled.div`
+  font-size: 35px;
+  float: right;
+`;
+
+const CurrentIcon = styled.div`
+  float: right;
+  margin-top: -10px;
+`;
+
+const CurrentWeather = ({ current: { icon, temperature } }) => {
   return (
-    <div className="Current-weather">
-      <div className="Current-icon">
+    <div>
+      <CurrentIcon>
         <img
           alt="Current Weather"
-          src={`https://openweathermap.org/img/w/${props.current.icon}.png`}
+          src={`https://openweathermap.org/img/w/${icon}.png`}
         />
-      </div>
-      <div className="Current-temperature">
-        {props.current.temperature}&deg;
-      </div>
-      <div className="clear" />
+      </CurrentIcon>
+      <Temperature>{temperature}&deg;</Temperature>
+      <Clear />
     </div>
   );
 };
 
 CurrentWeather.propTypes = {
-  current: PropTypes.object.isRequired
+  current: PropTypes.shape({}).isRequired,
 };
 
 export default CurrentWeather;

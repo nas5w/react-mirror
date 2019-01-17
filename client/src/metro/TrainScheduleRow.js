@@ -1,34 +1,43 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./Metro.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-const TrainScheduleRow = props => {
+const TrainRow = styled.tr`
+  td {
+    padding: 2px 0 2px 7px;
+  }
+`;
+
+const LineImage = styled.img`
+  height: 22px;
+`
+
+const TrainScheduleRow = ({ line, destination, min }) => {
   return (
-    <tr className="Train-row">
+    <TrainRow>
       <td>
-        {(props.line === "BL" ||
-          props.line === "OR" ||
-          props.line === "SV" ||
-          props.line === "RD" ||
-          props.line === "YL" ||
-          props.line === "GR") && (
-          <img
-            alt={`${props.line} line`}
-            className="Line-image"
-            src={`./img/${props.line}.png`}
+        {(line === 'BL' ||
+          line === 'OR' ||
+          line === 'SV' ||
+          line === 'RD' ||
+          line === 'YL' ||
+          line === 'GR') && (
+          <LineImage
+            alt={`${line} line`}
+            src={`./img/${line}.png`}
           />
         )}
       </td>
-      <td>{props.destination}</td>
-      <td>{props.min}</td>
-    </tr>
+      <td>{destination}</td>
+      <td>{min}</td>
+    </TrainRow>
   );
 };
 
 TrainScheduleRow.propTypes = {
   line: PropTypes.string.isRequired,
   destination: PropTypes.string.isRequired,
-  min: PropTypes.string.isRequired
+  min: PropTypes.string.isRequired,
 };
 
 export default TrainScheduleRow;

@@ -21,11 +21,10 @@ cd ../server
 npm i
 ```
 
-Next, set node environment variables in the `server` directory for your API keys:
+Next, set node environment variables in the `server` and `client` directory for your API keys and settings:
 
 ```bash
-set METRO_API_KEY=XXXXXX
-set WEATHER_API_KEY=XXXXXX
+cp .env.sample .env
 ```
 
 ## Using the Application
@@ -36,7 +35,7 @@ server:
 
 ```bash
 cd server
-node .
+npm start
 ```
 
 React application:

@@ -1,20 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import FutureWeatherRow from "./FutureWeatherRow";
-import "./Weather.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import FutureWeatherRow from './FutureWeatherRow';
 
-const FutureWeather = props => {
+const FutureWeather = ({ forecast }) => {
   return (
-    <div className="Future-weather">
-      {props.forecast.map((forecast, key) => {
+    <div>
+      {forecast.map(({ day, hi, low, icon }, key) => {
         return (
-          <FutureWeatherRow
-            key={key}
-            day={forecast.day}
-            hi={forecast.hi}
-            low={forecast.low}
-            icon={forecast.icon}
-          />
+          <FutureWeatherRow key={key} day={day} hi={hi} low={low} icon={icon} />
         );
       })}
     </div>
@@ -22,7 +15,7 @@ const FutureWeather = props => {
 };
 
 FutureWeather.propTypes = {
-  weather: PropTypes.object.isRequired
+  forecast: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default FutureWeather;

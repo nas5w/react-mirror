@@ -1,30 +1,35 @@
-import React from "react";
-import PropTypes from "prop-types";
-import TrainScheduleRow from "./TrainScheduleRow";
-import "./Metro.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import TrainScheduleRow from './TrainScheduleRow';
 
-const TrainSchedule = props => {
+const Schedule = styled.table`
+  float: right;
+  text-align: right;
+`;
+
+const TrainSchedule = ({ metro }) => {
   return (
-    <table className="Train-schedule">
+    <Schedule>
       <tbody>
-        {props.metro &&
-          props.metro.map((train, key) => {
+        {metro &&
+          metro.map(({ Line, Destination, Min }, key) => {
             return (
               <TrainScheduleRow
                 key={key}
-                line={train.Line}
-                destination={train.Destination}
-                min={train.Min}
+                line={Line}
+                destination={Destination}
+                min={Min}
               />
             );
           })}
       </tbody>
-    </table>
+    </Schedule>
   );
 };
 
 TrainSchedule.propTypes = {
-  metro: PropTypes.object.isRequired
+  metro: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default TrainSchedule;

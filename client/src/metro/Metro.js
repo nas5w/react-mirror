@@ -1,24 +1,34 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrain } from "@fortawesome/free-solid-svg-icons";
-import TrainSchedule from "./TrainSchedule";
-import "./Metro.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrain } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+import TrainSchedule from './TrainSchedule';
 
-const Metro = props => {
+const Clear = styled.div`
+  clear: both;
+`;
+
+const TrainIcon = styled.div`
+  float: right;
+  font-size: 30px;
+  margin-bottom: 10px;
+`;
+
+const Metro = ({ metro }) => {
   return (
-    <div className="Metro">
-      <div className="Train-icon">
+    <div>
+      <TrainIcon>
         <FontAwesomeIcon icon={faTrain} />
-      </div>
-      <div className="clear" />
-      {props.metro && <TrainSchedule metro={props.metro} />}
+      </TrainIcon>
+      <Clear />
+      {metro && <TrainSchedule metro={metro} />}
     </div>
   );
 };
 
 Metro.propTypes = {
-  metro: PropTypes.object.isRequired
+  metro: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default Metro;

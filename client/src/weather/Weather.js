@@ -1,24 +1,28 @@
-import React from "react";
-import PropTypes from "prop-types";
-import CurrentWeather from "./CurrentWeather";
-import FutureWeather from "./FutureWeather";
-import "./Weather.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import CurrentWeather from './CurrentWeather';
+import FutureWeather from './FutureWeather';
 
-const Weather = props => {
+const WeatherPanel = styled.div`
+  margin-bottom: 20px;
+`
+
+const Weather = ({ weather }) => {
   return (
-    <div className="Weather">
-      {props.weather && (
+    <WeatherPanel>
+      {weather && (
         <div>
-          <CurrentWeather current={props.weather.current} />
-          <FutureWeather forecast={props.weather.forecast} />
+          <CurrentWeather current={weather.current} />
+          <FutureWeather forecast={weather.forecast} />
         </div>
       )}
-    </div>
+    </WeatherPanel>
   );
 };
 
 Weather.propTypes = {
-  weather: PropTypes.object.isRequired
+  weather: PropTypes.shape({}).isRequired,
 };
 
 export default Weather;
